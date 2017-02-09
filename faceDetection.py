@@ -11,11 +11,33 @@ eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 
 #video = cv2.VideoCapture(0)
+# initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
-video = PiRGBArray(camera)
+camera.resolution = (640, 480)
+camera.framerate = 32
+rawCapture = PiRGBArray(camera, size=(640, 480))
 
-while(video.isOpened()):
-    ret, frame = video.read()
+# allow the camera to warmup
+time.sleep(0.1)
+
+# capture frames from the camera
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    # grab the raw NumPy array representing the image, then initialize the timestamp
+    # and occupied/unoccupied text
+    image = frame.array
+
+
+
+while(frame.isOpened()):
+
+    #ret, frame = video.read()
+    # show the frame
+    ret = cv2.imshow("Frame", image)
+    key = cv2.waitKey(1) & 0xFF
+
+    # clear the stream in preparation for the next frame
+    rawCapture.truncate(0)
+
     if ret:
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.5, 1)
@@ -33,6 +55,7 @@ while(video.isOpened()):
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+rawCapture.truncate(0)
 
-video.release()
-cv2.destroyAllWindows()
+#video.release()
+#cv2.destroyAllWindows()
