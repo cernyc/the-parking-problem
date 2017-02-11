@@ -11,7 +11,7 @@ camera.framerate = 32
 rawCapture = PiRGBArray(camera, size=(640, 480))
 display_window = cv2.namedWindow("Faces")
 
-face_cascade = cv2.CascadeClassifier('path_to_my_face_cascade.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 time.sleep(1)
 
