@@ -24,7 +24,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.1, 5)
     for (x,y,w,h) in faces:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 1, 1), 1)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (255, 1, 1), 1)
         roi_gray = gray[y:y + h, x:x + w]
         roi_color = frame[y:y + h, x:x + w]
         eyes = eye_cascade.detectMultiScale(roi_gray)
