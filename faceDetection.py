@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-
+import time
 ### https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/
 
 
