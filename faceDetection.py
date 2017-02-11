@@ -1,5 +1,7 @@
 import numpy as np
 import cv2
+import time
+
 
 
 ### https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/
@@ -7,6 +9,9 @@ import cv2
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+
+
+time.sleep(0.1)
 
 
 video = cv2.VideoCapture(0)
