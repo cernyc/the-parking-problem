@@ -12,6 +12,7 @@ rawCapture = PiRGBArray(camera, size=(640, 480))
 display_window = cv2.namedWindow("Faces")
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 time.sleep(1)
 
@@ -23,7 +24,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.1, 5)
     for (x,y,w,h) in faces:
-        cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,0),2)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 1, 1), 1)
+        roi_gray = gray[y:y + h, x:x + w]
+        roi_color = frame[y:y + h, x:x + w]
+        eyes = eye_cascade.detectMultiScale(roi_gray)
+        for (ex, ey, ew, eh) in eyes:
+            cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (1, 255, 1), 2)
 
     #DISPLAY TO WINDOW
     cv2.imshow("Faces", image)
