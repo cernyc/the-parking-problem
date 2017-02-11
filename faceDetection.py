@@ -1,9 +1,5 @@
 import numpy as np
 import cv2
-import time
-from picamera.array import PiRGBArray
-from picamera import PiCamera
-
 
 ### https://pythonprogramming.net/haar-cascade-face-eye-detection-python-opencv-tutorial/
 
@@ -11,16 +7,8 @@ from picamera import PiCamera
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
-camera = PiCamera()
-camera.resolution = (640, 480)
-camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(640, 480))
 
-time.sleep(0.1)
-
-
-#video = cv2.VideoCapture(0)
-video = rawCapture
+video = cv2.VideoCapture(0)
 
 while(video.isOpened()):
     ret, frame = video.read()
@@ -36,16 +24,9 @@ while(video.isOpened()):
                 cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(1,255,1),2)
 
         cv2.imshow('Video', frame)
-        key = cv2.waitKey(1) & 0xFF
 
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-    rawCapture.truncate(0)
-
-    # if the `q` key was pressed, break from the loop
-    if key == ord("q"):
         break
 
 
