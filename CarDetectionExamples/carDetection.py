@@ -3,7 +3,7 @@ import cv2
 import time
 
 
-cars_cascade = cv2.CascadeClassifier('lbp_cars.xml')
+cars_cascade = cv2.CascadeClassifier('cars.xml')
 
 
 img = cv2.imread('pictures/image3.jpg',0)
