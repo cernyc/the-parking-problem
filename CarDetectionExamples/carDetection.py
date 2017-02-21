@@ -3,19 +3,21 @@ import cv2
 import time
 
 
-cars_cascade = cv2.CascadeClassifier('cars.xml')
+cars_cascade = cv2.CascadeClassifier('lbp_cascade.xml')
 
 
-img = cv2.imread('pictures/image3.jpg',0)
-cars = cars_cascade.detectMultiScale(img, scaleFactor = 1.2,
-                                   minNeighbors = 5, minSize=(150,150),flags = cv2.CASCADE_SCALE_IMAGE)
+img = cv2.imread('pictures/garagepic/pos/pos12.jpg')
+cars = cars_cascade.detectMultiScale(img, scaleFactor = 1.03,
+                                   minNeighbors = 0, minSize=(400,400), maxSize=(800,700))
 for (x,y,w,h) in cars:
     cv2.rectangle(img,(x,y),(x+w,y+h),(255,1,1),3)
+
 
     resized_image = cv2.resize(img, (960, 540))
 
     cv2.imshow('cars?', resized_image)
-
+    print w
+    print h
 
     if cv2.waitKey(0) & 0xFF == ord('q'):
         break
