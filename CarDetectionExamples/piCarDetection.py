@@ -10,7 +10,7 @@ camera.resolution = (640, 480)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera, size=(640, 480))
 
-cars_cascade = cv2.CascadeClassifier('cars.xml')
+cars_cascade = cv2.CascadeClassifier('lbp_cascade.xml')
 # allow the camera to warmup
 time.sleep(0.1)
 
@@ -20,9 +20,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # and occupied/unoccupied text
     image = frame.array
 
-    cars = cars_cascade.detectMultiScale(format, scaleFactor = 1.1,
-                                   minNeighbors = 10, minSize=(200,200),
-                                   flags = cv2.cv.CV_HAAR_SCALE_IMAGE)
+    cars = cars_cascade.detectMultiScale(format, scaleFactor = 1.03,
+                                   minNeighbors = 0, minSize=(200,200), maxSize=(800,700))
     for (x, y, w, h) in cars:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 1, 1), 1)
 
