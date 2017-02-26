@@ -20,13 +20,13 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # and occupied/unoccupied text
     image = frame.array
 
-    cars = cars_cascade.detectMultiScale(format, scaleFactor = 1.03,
-                                   minNeighbors = 0, minSize=(200,200), maxSize=(800,700))
+    cars = cars_cascade.detectMultiScale(image, scaleFactor = 1.03,
+                                   minNeighbors = 0, minSize=(200,200))
     for (x, y, w, h) in cars:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 1, 1), 1)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (255, 1, 1), 1)
 
 
-    cv2.imshow('Video', frame)
+    cv2.imshow('Video', image)
 
 
     # show the frame
