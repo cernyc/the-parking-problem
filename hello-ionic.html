@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<title>Parking Problem</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">      
+<style>
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+.bgimg {
+    background-position: center;
+    background-size: cover;
+    min-height: 50%;
+}
+.menu {
+    display: none;
+}
+.div {
+  position: fixed;
+}
+</style>
+<body style="overflow: scroll; height: 100%; width: 100%">
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black" style="position: relative">
+    <div class="w3-col s3">
+      <a href="#home" class="w3-button w3-block w3-black">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">LOTS</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black">LOG-IN</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#where" class="w3-button w3-block w3-black">CONTACT</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min w3-white" id="home">
+  <div class="w3-display-middle w3-center ">
+  <br><br>
+  <span class="w3-tag w3-wide" style="font-size:60px">9</span>
+    <p  style="font-size:35px">Spots are available</p>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+  <div class="w3-content" style="max-width:800px">
+  <div class="w3-display-right w3-center w3-padding-large">
+  <span class="w3-tag" style="font-size:20px">Rollins College Valet</span>
+  </div>
+    <br><br><br><br><br><br><br><br>
+
+</div>
+    <img src="http://r-net.rollins.edu/marketing-communications/images/Rollins_logo_BLACK.png" style="text-align:center;width:30%;max-width:250px" class="w3-margin-top">
+
+
+<div class="w3-container" id="about" style="padding-top:50px;">
+<div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center"><span class="w3-tag w3-wide">LOTS</span></h5>
+    <br><br>
+    <p class="w3-center" style="font-size:20px">Alfond parking <span class="w3-tag w3-wide" style="font-size:17px">PENDING</span></p><br>
+    <p class="w3-center" style="font-size:20px">Sutton parking <span class="w3-tag w3-wide" style="font-size:17px">PENDING</span></p><br>
+    <p class="w3-center" style="font-size:20px">Library parking <span class="w3-tag w3-wide" style="font-size:17px">PENDING</span></p><br>
+    <p class="w3-center" style="font-size:20px">Hauck parking <span class="w3-tag w3-wide" style="font-size:17px">PENDING</span></p>
+    <br><br>
+    <div class ="w3-center">
+    <iframe class="w3-center" src="//giphy.com/embed/X7T2Sm5OUN7wI" ></iframe>
+    </div><br>
+    <br><br>
+
+
+</div>
+</div>
+
+
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">LOG-IN</span></h5>
+
+    <br><br><br>
+  
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Username" required name="Username"></p>
+      <p><input class="w3-input w3-padding-16" type="password" placeholder="Password" required name="Password" ></p>
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large" type="log-in">
+          <i class="fa fa-paper-plane"></i> LOG-IN
+        </button>
+      </p>
+    </form>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    </div>
+</div>
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:65px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CONTACT</span></h5>
+    <br><br><br><br>
+    <p style="font-size:25px">The campus safety office is open 24/7</p>
+    <p style="font-size:25px">To contact us, please call <font color= #FF0000 > 407-646-2999 </font></p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-large">
+<p>The parking garage team ©</p>
+</footer>
+
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(41.878114, -87.629798);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+</body>
+</html>
